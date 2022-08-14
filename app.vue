@@ -9,13 +9,13 @@
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 
-useHead({
+/* useHead({
   title: "Cos Vault",
   viewport: "width=device-width, initial-scale=1, maximum-scale=1",
   charset: "utf-8",
   meta: [{ name: "description", content: "Chamber of Secrets Vault." }],
   link: [{ rel: "icon", type: "image/x-icon", href: "/dungeon.ico" }],
-});
+}); */
 </script>
 
 <style>

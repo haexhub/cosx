@@ -1,6 +1,7 @@
 <template>
+
   <nuxt-layout name="vault-layout">
-    <div class="h-screen ">
+    <div class="">
       <div>
 
         <NuxtLink to="/vault">vault page</NuxtLink>
@@ -33,7 +34,10 @@
 
 <script setup lang="ts">
 import { useMenuStore } from "~~/store/menu-store";
-
+import { useVaultStore } from "@/store/vault-store";
 const menuStore = useMenuStore();
+const vault = useVaultStore();
+/*
 const name = "IconKey";
+*/
 </script>

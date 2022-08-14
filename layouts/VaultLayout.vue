@@ -1,41 +1,48 @@
 <template>
-  <div class="h-full">
-    <swiper class="mySwiper h-full">
-      <swiper-slide class="bg-yellow-200">
-        <vault />
+  <div class="h-full flex flex-col bg-purple-700">
+    <cos-logo class="" />
+    <div class="h-full">
+      <basic-swiper
+        class="h-full"
+        ref="refSwiper"
+        @slideChange="slides.pages.setActiveIndex($event.activeIndex)"
+      >
+        <swiper-slide class="bg-yellow-200 h-full">
+          <vault />
+        </swiper-slide>
 
-      </swiper-slide>
-      <swiper-slide class="bg-green-200">
-        <vault-storage />
+        <swiper-slide class="bg-green-200">
+          <vault-message />
+        </swiper-slide>
 
-      </swiper-slide>
+        <swiper-slide class="bg-green-200">
+          <vault-storage />
+        </swiper-slide>
 
-      <swiper-slide>
-        <swiper class=" h-64 my-10">
-          <swiper-slide class="bg-blue-200">
-            lalalal
-
-          </swiper-slide>
-          <swiper-slide class="bg-red-200">
-            uhuhuhu
-
-          </swiper-slide>
-        </swiper>
-      </swiper-slide>
-    </swiper>
-
+        <swiper-slide class="bg-green-200">
+          <vault-calendar />
+        </swiper-slide>
+      </basic-swiper>
+    </div>
     <navbar>
-      <navbar-page-navigation />
+      <navbar-page-navigation @navigate="slides.pages.setActiveIndex($event)" />
     </navbar>
+
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from "@vue/reactivity";
-import { useMenuStore } from "@/store/menu-store";
-import { useVaultStore } from "~~/store/vault-store";
-import { Swiper, SwiperSlide } from "swiper/vue";
-import "swiper/css/bundle";
-/* 
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper"; */
+
+import { Swiper, SwiperSlide, useSwiper } from "swiper/vue";
+import { Controller, Swiper as ISwiper } from "swiper";
+
+import "swiper/css";
+import { useSlideStore } from "~~/store/slide-store";
+
+const slides = useSlideStore();
+const refSwiper = ref();
+
+const onSlideChange = (s: any) => console.log(s);
+onMounted(() => slides.pages.setSwiper(refSwiper.value.controller));
 </script>

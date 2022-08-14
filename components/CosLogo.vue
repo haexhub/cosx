@@ -1,5 +1,5 @@
 <template>
-  <div class="py-6">
+  <div class="py-4">
     <div class="
       w-full 
       flex 

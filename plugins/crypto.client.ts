@@ -1,10 +1,8 @@
 export interface IFileSystemFileHandle extends FileSystemFileHandle { }
 import { IVaultFile } from "@/store/vault-store";
-import { createPinia } from 'pinia'
-import { PiniaPluginContext } from 'pinia'
-import { Plugin } from 'nuxt/app'
 
-const cryptoPiniaPlugin = (context: PiniaPluginContext) => {
+export default defineNuxtPlugin(nuxtApp => {
+
   const checkBrowserCompatibility = (): boolean => {
     //@ts-ignore
     return window?.showSaveFilePicker && window.showOpenFilePicker
@@ -218,30 +216,22 @@ const cryptoPiniaPlugin = (context: PiniaPluginContext) => {
     }
   }
 
-  const getUUID = async () => {
-    if (process.client)
-      return await window.crypto.randomUUID()
-    else
-      return await crypto.randomUUID()
+  const getUUID = () => {
+    return crypto.randomUUID()
   }
 
   return {
     provide: {
-      checkBrowserCompatibility,
-      createVaultFile,
-      decryptVaultFileHandle,
-      getUUID,
-      openVaultFile,
-      saveFileEncrypted,
+      crypto: {
+        checkBrowserCompatibility,
+        createVaultFile,
+        decryptVaultFileHandle,
+        getUUID,
+        openVaultFile,
+        saveFileEncrypted,
+      }
     }
   }
-}
-
-const cryptoNuxtPlugin: Plugin = ({ $pinia }) => {
-  $pinia.use(cryptoPiniaPlugin)
-}
-
-
-export default defineNuxtPlugin(cryptoNuxtPlugin)
+})
 
 

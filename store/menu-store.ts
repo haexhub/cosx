@@ -1,13 +1,5 @@
 import { defineStore, skipHydrate } from 'pinia'
 
-/* interface IMenuStore {
-  isNavbarVisible: boolean
-  isActionButtonVisible: boolean
-  isActionButtonMenuVisible: boolean
-  isMarkMenuVisible: boolean
-  iconClass: string
-} */
-
 export const useMenuStore = defineStore("menuStore", () => {
 
   const isActionButtonVisible = ref(true)
