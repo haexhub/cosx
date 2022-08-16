@@ -1,8 +1,5 @@
 <template>
-  <swiper
-    v-bind="swiperConfig"
-    @swiper="setController"
-  >
+  <swiper v-bind="swiperConfig">
     <slot />
   </swiper>
 </template>
@@ -50,14 +47,4 @@ const swiperConfig = {
   ...defaultOptions,
   ...swiperOptions,
 };
-
-const controller = ref();
-
-const setController = (swiper: ISwiper) => {
-  controller.value = swiper;
-};
-
-defineExpose({
-  controller,
-});
 </script>

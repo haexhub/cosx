@@ -12,8 +12,13 @@
     "nuxt-windicss": "^2.5.0"
   },
   "dependencies": {
+    "@apollo/client": "^3.6.9",
+    "@nhost/apollo": "^0.5.25",
+    "@nhost/vue": "^0.4.1",
     "@pinia/nuxt": "^0.4.0",
+    "@vue/apollo-composable": "^4.0.0-alpha.19",
     "fuse.js": "^6.6.2",
+    "graphql": "^16.5.0",
     "swiper": "^8.3.2"
   }
 }

@@ -1,43 +1,77 @@
 <template>
-
   <nuxt-layout name="vault-layout">
-    <div class="">
-      <div>
 
-        <NuxtLink to="/vault">vault page</NuxtLink>
+    <div class="h-full flex flex-col ">
+      <cos-logo class="" />
+
+      <button @click="signup">SignUp</button>
+      <button @click="signin">SignIn</button>
+
+      <div class="h-full">
+        <basic-swiper
+          class="h-full"
+          @slideChange="slides.setActiveIndex($event.activeIndex)"
+          @swiper="slides.setSwiper"
+        >
+          <swiper-slide class="bg-yellow-200 h-full">
+            <vault />
+          </swiper-slide>
+
+          <swiper-slide class="bg-green-200">
+            <vault-message />
+          </swiper-slide>
+
+          <swiper-slide class="bg-green-200">
+            <vault-storage />
+          </swiper-slide>
+
+          <swiper-slide class="bg-green-200">
+            <vault-calendar />
+          </swiper-slide>
+        </basic-swiper>
       </div>
+      <navbar>
+        <navbar-page-navigation @navigate="slides.setActiveIndex($event)" />
+      </navbar>
 
-      <Icon v-show="menuStore.isNavbarVisible">
-        <IconInfo
-          class="w-10 mt-1 md:w-12 md:mt-1.5 cursor-pointer transform duration-300 bg-yellow-500"
-          :class="menuStore.iconClass"
-        />
-      </Icon>
-      <IconKey class="w-10" />
-
-      <navbar />
-
-      <a
-        v-show="!menuStore.isActionButtonVisible"
-        class="bg-primary relative mx-auto transform rotate-45 w-12 md:w-16 h-12 md:h-16 bottom-6 md:bottom-8 rounded block z-20 hover:bg-primary-hover hover:ring"
-      >
-        <Icon>
-          <IconPlus
-            class="cursor-pointer transform duration-300"
-            :class="menuStore.iconClass"
-          />
-        </Icon>
-      </a>
     </div>
+
   </nuxt-layout>
 </template>
 
 <script setup lang="ts">
-import { useMenuStore } from "~~/store/menu-store";
-import { useVaultStore } from "@/store/vault-store";
-const menuStore = useMenuStore();
-const vault = useVaultStore();
-/*
-const name = "IconKey";
-*/
+import { SwiperSlide } from "swiper/vue";
+import { usePageSlider } from "~~/store/slide-store";
+
+const nhost = useNhost();
+const slides = usePageSlider();
+const graphql = useGraphql();
+
+const signup = async () => {
+  const response = await nhost.auth.signUp({
+    email: "hexxx@ok.de",
+    password: "Fingerweg666",
+  });
+
+  console.log(response);
+};
+
+const signin = async () => {
+  nhost.auth.sendVerificationEmail({ email: "hexxx@ok.de" });
+  const response = await nhost.auth.signIn({
+    email: "hexxx@ok.de",
+    password: "Fingerweg666",
+  });
+
+  console.log(response);
+};
+
+/* const gq = async () => {
+  const test = gql`
+    query {
+      
+    }
+  `;
+  //const { data, error } = await nhost.graphql.request()
+}; */
 </script>
