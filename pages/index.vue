@@ -1,6 +1,7 @@
 <template>
   <nuxt-layout name="vault-layout">
-
+    <nuxt-link class="btn" to="/sign-up"> Sign Up </nuxt-link><br />
+    <nuxt-link class="btn" to="/sign-in"> Sign In </nuxt-link>
     <div class="h-full flex flex-col ">
       <cos-logo class="" />
 
@@ -43,12 +44,13 @@
 import { SwiperSlide } from "swiper/vue";
 import { usePageSlider } from "~~/store/slide-store";
 
-const nhost = useNhost();
+
 const slides = usePageSlider();
-const graphql = useGraphql();
+const nhost = useNhost();
+//const graphql = useGraphql();
 
 const signup = async () => {
-  const response = await nhost.auth.signUp({
+  const response = await nhost.client.auth.signUp({
     email: "hexxx@ok.de",
     password: "Fingerweg666",
   });
@@ -57,15 +59,14 @@ const signup = async () => {
 };
 
 const signin = async () => {
-  nhost.auth.sendVerificationEmail({ email: "hexxx@ok.de" });
-  const response = await nhost.auth.signIn({
+  nhost.client.auth.sendVerificationEmail({ email: "hexxx@ok.de" });
+  const response = await nhost.client.auth.signIn({
     email: "hexxx@ok.de",
     password: "Fingerweg666",
   });
 
   console.log(response);
-};
-
+}; 
 /* const gq = async () => {
   const test = gql`
     query {
@@ -73,5 +74,5 @@ const signin = async () => {
     }
   `;
   //const { data, error } = await nhost.graphql.request()
-}; */
+};*/
 </script>

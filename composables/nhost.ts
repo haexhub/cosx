@@ -1,15 +1,19 @@
-import { NhostClient, NhostGraphqlClient } from '@nhost/nhost-js'
+import { NhostClient } from '@nhost/nhost-js'
 import { skipHydrate } from '@pinia/nuxt/dist/runtime/composables'
 
 export const useNhost = () => {
-  const nhost = new NhostClient({
+  const client = new NhostClient({
     backendUrl: "http://haex.space",
+    devTools: true
   })
-  return nhost
+  client.auth.client.machine.config.predictableActionArguments = true
+  return {
+    client,
+  }
 }
 
-export const useGraphql = () => {
+/* export const useGraphql = () => {
   const graphql = new NhostGraphqlClient({
     url: "graphql.haex.space"
   })
-}
+} */
