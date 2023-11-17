@@ -1,0 +1,65 @@
+{
+  "de": {
+    "welcome": "Dein digitales Leben zu deinen Fingern",
+    "signIn": {
+      "message": "Melde dich mit deinem Account an",
+      "label": "Anmelden"
+    },
+    "signUp": {
+      "label": "Account erstellen",
+      "message": "Noch keinen Account?"
+    },
+    "email": {
+      "label": "E-Mail Adresse",
+      "placeholder": "deineMail{'@'}provider.de"
+    },
+    "password": {
+      "label": "Passwort",
+      "forgot": "Passwort vergessen?",
+      "placeholder": "Dein Passwort"
+    },
+
+    "schema": {
+      "email": {
+        "required": "Gültige E-Mail Adresse notwendig",
+        "valid": "Gültige E-Mail Adresse notwendig"
+      },
+      "password": {
+        "required": "Passwort darf nicht leer sein",
+        "minLength": "Passwort muss mindestens {count} Zeichen lang sein"
+      }
+    }
+  },
+
+  "en": {
+    "welcome": "Your digital life at your fingertips",
+    "signIn": {
+      "label": "Sign In",
+      "message": "Sign in to access your account"
+    },
+    "signUp": {
+      "label": "Sign Up",
+      "message": "Don't have an account yet?"
+    },
+    "email": {
+      "label": "E-Mail Address",
+      "placeholder": "yourMail{'@'}provider.com"
+    },
+    "password": {
+      "label": "Password",
+      "forgot": "Forgot password?",
+      "placeholder": "Your Password"
+    },
+
+    "schema": {
+      "email": {
+        "required": "Valid email required",
+        "valid": "Valid email required"
+      },
+      "password": {
+        "required": "Password required",
+        "minLength": "Password must contain at least {count} characters"
+      }
+    }
+  }
+}
